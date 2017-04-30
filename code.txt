@@ -1,4 +1,5 @@
-/* you can sort two arrays, then compare them to get maxmized point, but my code will show you step-by-step strategy*/
+/*maximize-points from codewar.com the problem is that you have two teams, each player has a ceertain integer to indicate its playpower. Both teams have the same amout of players. The player in team1 plays againest the corresponding one from the team2. Player with higher power will win, and you will get one point from this match up otherwise 0. As a coach, you should range the order in your team1 so that you can win the maximum point totally. strategy to win a game in javascripts
+you can sort two arrays, then compare them to get maxmized point, but my code will show you step-by-step strategy*/
 function maximizePoints(team1, team2){
   var maxScore = 0;
   return getMaxScore(team1,team2,maxScore);
