@@ -1,25 +1,27 @@
+/* you can sort two arrays, then compare them to get maxmized point, but my code will show you step-by-step strategy
 function maximizePoints(team1, team2){
   var maxScore = 0;
   return getMaxScore(team1,team2,maxScore);
 }
 
 function getMaxScore(team1,team2,maxScore){
-  if(team1.length === 1 && team2.length === 1){
+  if(team1.length === 1 && team2.length === 1){   //base case for recursion
     if(team1[0] < team2[0])
       return maxScore;
     else
       return maxScore + 1;
   }
   else {
-    var candidates = [];
+    var candidates = [];  //put all possible candidates from team1 that can beat the member in team2
     for(var i = 0; i < team1.length; i++){
       if(team2[0] < team1[i]){
         candidates.push(team1[i]);
       } 
     }
-    if(candidates.length === 0){
+    //if you cannot find such
+    if(candidates.length === 0){ 
       team2.shift();
-      var pick = Math.min.apply(null,team1);
+      var pick = Math.min.apply(null,team1);  //you should pick the lowest power as a sacrifice
       var index = 0;
       for(var j = 0; j < team1.length; j++){
           if(pick === team1[j]){
@@ -32,7 +34,7 @@ function getMaxScore(team1,team2,maxScore){
     }
     else{
       maxScore += 1;
-      var pick = Math.min.apply(null,candidates);
+      var pick = Math.min.apply(null,candidates); //choose the lowest that can win
       var index = 0;
       for(var k = 0; k < team1.length; k++){
           if(pick === team1[k]){
@@ -43,6 +45,6 @@ function getMaxScore(team1,team2,maxScore){
     }
     team1.splice(index,1);
     team2.shift();
-    return getMaxScore(team1,team2,maxScore);
+    return getMaxScore(team1,team2,maxScore); //recurssive call
   }
 }
