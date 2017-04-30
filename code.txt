@@ -1,0 +1,48 @@
+function maximizePoints(team1, team2){
+  var maxScore = 0;
+  return getMaxScore(team1,team2,maxScore);
+}
+
+function getMaxScore(team1,team2,maxScore){
+  if(team1.length === 1 && team2.length === 1){
+    if(team1[0] < team2[0])
+      return maxScore;
+    else
+      return maxScore + 1;
+  }
+  else {
+    var candidates = [];
+    for(var i = 0; i < team1.length; i++){
+      if(team2[0] < team1[i]){
+        candidates.push(team1[i]);
+      } 
+    }
+    if(candidates.length === 0){
+      team2.shift();
+      var pick = Math.min.apply(null,team1);
+      var index = 0;
+      for(var j = 0; j < team1.length; j++){
+          if(pick === team1[j]){
+            index = j;
+            break;
+        }  
+      }
+      team1.splice(index,1);
+      return getMaxScore(team1,team2,maxScore);
+    }
+    else{
+      maxScore += 1;
+      var pick = Math.min.apply(null,candidates);
+      var index = 0;
+      for(var k = 0; k < team1.length; k++){
+          if(pick === team1[k]){
+            index = k;
+            break;
+        }  
+      }
+    }
+    team1.splice(index,1);
+    team2.shift();
+    return getMaxScore(team1,team2,maxScore);
+  }
+}
