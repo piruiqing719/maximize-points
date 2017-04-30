@@ -1,4 +1,4 @@
-/* you can sort two arrays, then compare them to get maxmized point, but my code will show you step-by-step strategy
+/* you can sort two arrays, then compare them to get maxmized point, but my code will show you step-by-step strategy*/
 function maximizePoints(team1, team2){
   var maxScore = 0;
   return getMaxScore(team1,team2,maxScore);
